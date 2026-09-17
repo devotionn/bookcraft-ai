@@ -1,0 +1,142 @@
+/* BookCraft AI v0.1 — print-oriented Chinese book baseline */
+
+:root {
+  --page-width: 148mm;
+  --page-height: 210mm;
+  --margin-top: 18mm;
+  --margin-bottom: 20mm;
+  --margin-inner: 22mm;
+  --margin-outer: 16mm;
+  --body-size: 10.5pt;
+  --body-leading: 1.85;
+  --text: #191919;
+  --muted: #666;
+}
+
+@page {
+  size: A5;
+  margin: var(--margin-top) var(--margin-outer) var(--margin-bottom) var(--margin-inner);
+}
+
+@page :left {
+  margin-left: var(--margin-outer);
+  margin-right: var(--margin-inner);
+}
+
+@page :right {
+  margin-left: var(--margin-inner);
+  margin-right: var(--margin-outer);
+}
+
+html,
+body {
+  color: var(--text);
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", serif;
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-indent: 2em;
+  orphans: 2;
+  widows: 2;
+}
+
+p + p {
+  margin-top: 0;
+}
+
+.chapter-opener {
+  break-before: right;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chapter-title {
+  font-size: 22pt;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0 0 10mm;
+  text-indent: 0;
+}
+
+.chapter-subtitle {
+  font-size: 12pt;
+  color: var(--muted);
+  text-indent: 0;
+}
+
+h2,
+h3 {
+  break-after: avoid;
+}
+
+.figure {
+  break-inside: avoid;
+  margin: 6mm 0;
+  text-align: center;
+}
+
+.figure img {
+  display: block;
+  max-width: 100%;
+  max-height: 150mm;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.figure-caption {
+  font-size: 9pt;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 2.5mm;
+  text-align: center;
+  text-indent: 0;
+}
+
+.footnote {
+  font-size: 8.5pt;
+  line-height: 1.55;
+  text-indent: 0;
+}
+
+.front-matter,
+.appendix {
+  break-before: right;
+}
+
+.toc-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4mm;
+  text-indent: 0;
+}
+
+.toc-title {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.toc-title::after {
+  content: " ................................................................................";
+  color: #aaa;
+}
+
+.no-running-head {
+  page: clean;
+}
+
+@page clean {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
